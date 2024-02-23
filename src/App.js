@@ -1,33 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
-
 import React, { useState, useEffect } from 'react';
-import { API } from 'aws-amplify';
+import { get } from 'aws-amplify/api';
+import './App.css';
 
 const App = () => {
 
   const [coins, updateCoins] = useState([])
 
   async function fetchCoins() {
-    const data = await API.get('cryptoapi', '/coins')
-    updateCoins(data.coins)
+    
+    const restOperation = await get({
+      apiName: "cryptoapi",
+      path: "/coins"
+    });
+
+    const { body } = await restOperation.response;
+    const json = await body.json();
+    updateCoins(json.coins);
   };
+
 
   // Call fetchCoins function when component loads 
   useEffect(() => {
     fetchCoins()
   }, [])
 
+
   return (
     <div className="App">
-        {
-          coins.map((coin, index) => (
-            <div key={index}>
-              <h2>{coin.name} - {coin.symbol}</h2>
-              <h5>${coin.price_usd}</h5>
-            </div>
-          ))
-        }
+      {
+        coins.map((coin, index) => (
+          <div>
+            <h2>{coin.name} - {coin.symbol}</h2>
+            <h5>${coin.price_usd}</h5>
+          </div>
+        ))
+      }
     </div>
   );
 }
