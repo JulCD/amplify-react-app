@@ -6,7 +6,7 @@ const App = () => {
 
   const [coins, updateCoins] = useState([])
 
-  async function fetchCoins() {
+  const fetchCoins = async() => {
     
     const restOperation = await get({
       apiName: "cryptoapi",
