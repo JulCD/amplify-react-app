@@ -4,13 +4,23 @@ import './App.css';
 
 const App = () => {
 
-  const [coins, updateCoins] = useState([])
+  const [coins, updateCoins] = useState([]);
 
-  const fetchCoins = async() => {
-    
+  // Create additional state to hold user input for limit and start properties
+  const [input, updateInput] = useState({ limit: 5, start: 0 });
+
+  // Create a new function to allow users to update the input values
+  function updateInputValues(type, value) {
+    updateInput({ ...input, [type]: value });
+  }
+
+  const fetchCoins = async () => {
+
+    const { limit, start } = input;
+
     const restOperation = await get({
       apiName: "cryptoapi",
-      path: "/coins"
+      path: `/coins?limit=${limit}&start=${start}`
     });
 
     const { body } = await restOperation.response;
