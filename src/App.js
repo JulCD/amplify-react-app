@@ -14,7 +14,12 @@ const App = () => {
     updateInput({ ...input, [type]: value });
   }
 
+  //Create a variable  for loading message
+  const [loading, updateLoading] = useState(true);
+
   const fetchCoins = async () => {
+
+    updateLoading(true);
 
     const { limit, start } = input;
 
@@ -26,6 +31,8 @@ const App = () => {
     const { body } = await restOperation.response;
     const json = await body.json();
     updateCoins(json.coins);
+
+    updateLoading(false);
   };
 
 
@@ -49,8 +56,9 @@ const App = () => {
 
       <button onClick={fetchCoins}>Fetch Coins</button>
 
+      {loading && <h2>Loading...</h2>}
       {
-        coins.map((coin, index) => (
+        !loading && coins.map((coin, index) => (
           <div>
             <h2>{coin.name} - {coin.symbol}</h2>
             <h5>${coin.price_usd}</h5>
