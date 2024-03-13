@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "paths": {
+    "/born": {
+      "name": "/born",
+      "lambdaFunction": "cryptofunction",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    }
+  }
+}

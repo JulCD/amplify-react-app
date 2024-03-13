@@ -43,11 +43,23 @@ app.get('/coins', function(req, res) {
   // Call API and return response
   axios.get(apiUrl)
     .then(response => {
-      res.json({  coins: response.data.data })
+      res.json({ coins: response.data.data })
     })
     .catch(err => res.json({ error: err }))
 })
 
+//Creating new API function for project 3
+
+app.get('/born', function(req, res) {
+  let apiURL = 'https://api.github.com/users/JulCD'
+
+  axios.get(apiURL)
+  .then(response => {
+    res.json({ bornTime: response.data })
+  })
+  .catch(err => res.json({ error: err }))
+
+})
 
 /**********************
  * Example get method *

@@ -1,13 +1,6 @@
 {
   "version": 1,
   "paths": {
-    "/coins": {
-      "name": "/coins",
-      "lambdaFunction": "cryptofunction",
-      "permissions": {
-        "setting": "open"
-      }
-    },
     "/born": {
       "name": "/born",
       "lambdaFunction": "cryptofunction",

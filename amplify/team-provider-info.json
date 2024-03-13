@@ -9,17 +9,23 @@
       "UnauthRoleName": "amplify-cryptoapp-dev-101313-unauthRole",
       "StackName": "amplify-cryptoapp-dev-101313",
       "StackId": "arn:aws:cloudformation:us-east-2:665793754584:stack/amplify-cryptoapp-dev-101313/1db17f80-d0d4-11ee-8a7a-0a09082f62c7",
-      "AmplifyAppId": "d3p44ovrdrig1w"
+      "AmplifyAppId": "d3p44ovrdrig1w",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-cryptoapp-dev-101313-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "function": {
         "cryptofunction": {
           "deploymentBucketName": "amplify-cryptoapp-dev-101313-deployment",
-          "s3Key": "amplify-builds/cryptofunction-327343666d736b6c6d66-build.zip"
+          "s3Key": "amplify-builds/cryptofunction-7277773052787a4a4c65-build.zip"
         }
       },
       "api": {
-        "cryptoapi": {}
+        "cryptoapi": {},
+        "GithubUserAPI": {},
+        "githubapi": {}
+      },
+      "auth": {
+        "cryptoapp": {}
       }
     }
   }
