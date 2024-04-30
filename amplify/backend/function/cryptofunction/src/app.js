@@ -27,39 +27,39 @@ app.use(function(req, res, next) {
 
 /* Creating the /coins route from textbook */
 // Import axios
-const axios = require('axios')
+const axios = require("axios")
 
-app.get('/coins', function(req, res) {
+app.get("/coins", function(req, res) {
   // Define base url
-  let apiUrl = `https://api.coinlore.com/api/tickers?start=0&limit=10`
+  let apiUrl = `https://api.coinlore.com/api/tickers?start=0&limit=10`;
 
   // Check if there are any query string parameters
   // If so, reset the base url to include them
   if (req.apiGateway && req.apiGateway.event.queryStringParameters) {
    const { start = 0, limit = 10 } = req.apiGateway.event.queryStringParameters
-   apiUrl = `https://api.coinlore.com/api/tickers/?start=${start}&limit=${limit}`
+   apiUrl = `https://api.coinlore.com/api/tickers/?start=${start}&limit=${limit}`;
   }
 
   // Call API and return response
   axios.get(apiUrl)
     .then(response => {
-      res.json({ coins: response.data.data })
+      res.json({ coins: response.data.data });
     })
-    .catch(err => res.json({ error: err }))
-})
+    .catch(err => res.json({ error: err }));
+});
 
 //Creating new API function for project 3
 
-app.get('/born', function(req, res) {
-  let apiURL = 'https://api.github.com/users/JulCD'
+app.get("/born", function(req, res) {
+  let apiURL = 'https://api.github.com/users/JulCD';
 
   axios.get(apiURL)
   .then(response => {
-    res.json({ bornTime: response.data })
+    res.json({ bornTime: response.data });
   })
-  .catch(err => res.json({ error: err }))
+  .catch(err => res.json({ error: err }));
 
-})
+});
 
 /**********************
  * Example get method *
